@@ -1246,8 +1246,8 @@ function chooseNormalTarget(unit) {
   const enemies = livingOpponents(unit);
   if (!enemies.length) return null;
   const stats = effectiveStats(unit);
-  const inRangeEnemies = enemies.filter(t => inRange(unit, t, stats.rng));
-  let pool = inRangeEnemies.length ? inRangeEnemies : enemies;
+  const inRange = enemies.filter(t => inRange(unit, t, stats.rng));
+  let pool = inRange.length ? inRange : enemies;
 
   const forced = getTauntTargetFor(unit, pool);
   if (forced) return forced;
@@ -1352,7 +1352,7 @@ function computeDamage(attacker, target, opts) {
   mult *= 1 - (target._inDamageReduction || 0) / 100;
   if (opts.scaleBy) {
     const scaleStat = a[opts.scaleBy] || 0;
-    mult *= (1 + statInfluence(scaleStat));
+    mult *= statInfluence(scaleStat);
   }
 
   let dmg = base * mult;
@@ -1392,8 +1392,7 @@ function applyCasualty(target, dmg, attacker, sourceName) {
   return actual;
 }
 
-function triggerComboSkills(actor, target, damage, opts) {
-  if (!opts || !opts.normalAttack) return;
+function triggerComboSkills(actor, target, damage) {
   const comboSkill = getFirstSkill(actor, 'combo');
   if (!comboSkill) return;
   const chance = skillChance(actor, comboSkill);
@@ -1879,8 +1878,10 @@ function specialFlameDance(unit, skill, ctx) {
 function specialEmberEcho(unit, skill, ctx) {
   const target = ctx.attackTarget || ctx.target || randChoice(livingOpponents(unit));
   if (!target) return false;
-  dealDamage(unit, target, { power: 100, damageType: 'atk', sourceName: '灼熱の残響' });
-  addStatus(target, '燃焼', 'dot', 1, 20, 'turnEnd');
+  if (Math.random() < 0.3) {
+    dealDamage(unit, target, { power: 100, damageType: 'atk', sourceName: '灼熱の残響' });
+    addStatus(target, '燃焼', 'dot', 1, 20, 'turnEnd');
+  }
   return true;
 }
 
@@ -2048,7 +2049,7 @@ function triggerSkillEventForAllies(unit, eventName, ctx = {}) {
 
 function getCommander(side) {
   const list = side === 'left' ? state.battle.left : state.battle.right;
-  return list[0];
+  return side === 'left' ? list[0] : list[2];
 }
 
 function livingUnits() {
@@ -2312,13 +2313,6 @@ function tickUnitStatuses(unit, phase) {
   const next = [];
   for (const s of unit.statuses) {
     if (s.tick === phase || s.tick === 'all') {
-      // DOT damage applied before duration decrement
-      if (s.kind === 'dot' && unit.alive && s.duration > 0) {
-        const dotDmg = Math.round(s.value || 0);
-        if (dotDmg > 0) {
-          applyCasualty(unit, dotDmg, null, `${s.name}（持続ダメージ）`);
-        }
-      }
       s.duration -= 1;
     }
     if (s.duration > 0) next.push(s);
@@ -2345,7 +2339,7 @@ function checkBattleEnd() {
   const b = state.battle;
   if (!b) return false;
   const leftCommander = b.left[0];
-  const rightCommander = b.right[0];
+  const rightCommander = b.right[2];
   const leftDead = !leftCommander || !leftCommander.alive || leftCommander.troops <= 0;
   const rightDead = !rightCommander || !rightCommander.alive || rightCommander.troops <= 0;
   if (leftDead && rightDead) {
