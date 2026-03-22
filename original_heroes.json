@@ -1,0 +1,50 @@
+[
+  {
+    "id": "chrono",
+    "name": "クロノス",
+    "stats": {
+      "atk": 132,
+      "def": 165,
+      "int": 285,
+      "agi": 190,
+      "rng": 5
+    },
+    "skills": [
+      "時環の指揮",
+      "時律の逆行"
+    ],
+    "faction": "original"
+  },
+  {
+    "id": "ryuka",
+    "name": "リュウカ",
+    "stats": {
+      "atk": 248,
+      "def": 120,
+      "int": 180,
+      "agi": 262,
+      "rng": 3
+    },
+    "skills": [
+      "流焔乱舞",
+      "灼熱の残響"
+    ],
+    "faction": "original"
+  },
+  {
+    "id": "noa",
+    "name": "ノア",
+    "stats": {
+      "atk": 140,
+      "def": 190,
+      "int": 240,
+      "agi": 145,
+      "rng": 4
+    },
+    "skills": [
+      "時律の庇護",
+      "静止の祈り"
+    ],
+    "faction": "original"
+  }
+]

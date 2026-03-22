@@ -1,0 +1,137 @@
+[
+  {
+    "id": "zenobia",
+    "name": "ゼノビア",
+    "stats": {
+      "atk": 79,
+      "def": 187,
+      "int": 134,
+      "agi": 93,
+      "rng": 2
+    },
+    "skills": [
+      "パルメラの抵抗"
+    ],
+    "faction": "reference"
+  },
+  {
+    "id": "lincoln",
+    "name": "リンカーン",
+    "stats": {
+      "atk": 128,
+      "def": 136,
+      "int": 214,
+      "agi": 128,
+      "rng": 4
+    },
+    "skills": [
+      "自由の宣言"
+    ],
+    "faction": "reference"
+  },
+  {
+    "id": "kublai",
+    "name": "フビライ・ハン",
+    "stats": {
+      "atk": 128,
+      "def": 137,
+      "int": 165,
+      "agi": 221,
+      "rng": 3
+    },
+    "skills": [
+      "モンゴルの拡張"
+    ],
+    "faction": "reference"
+  },
+  {
+    "id": "rin",
+    "name": "リン",
+    "stats": {
+      "atk": 150,
+      "def": 125,
+      "int": 250,
+      "agi": 200,
+      "rng": 5
+    },
+    "skills": [
+      "赤眼の眼光"
+    ],
+    "faction": "reference"
+  },
+  {
+    "id": "monet",
+    "name": "モネ",
+    "stats": {
+      "atk": 25,
+      "def": 175,
+      "int": 275,
+      "agi": 35,
+      "rng": 2
+    },
+    "skills": [
+      "幻影の芸術"
+    ],
+    "faction": "reference"
+  },
+  {
+    "id": "carl",
+    "name": "カール",
+    "stats": {
+      "atk": 100,
+      "def": 200,
+      "int": 150,
+      "agi": 50,
+      "rng": 3
+    },
+    "skills": [
+      "岩壁の鉄槌"
+    ],
+    "faction": "reference"
+  },
+  {
+    "id": "mark",
+    "name": "マーク",
+    "stats": {
+      "atk": 175,
+      "def": 175,
+      "int": 175,
+      "agi": 175,
+      "rng": 2
+    },
+    "skills": [
+      "正義の心"
+    ],
+    "faction": "reference"
+  },
+  {
+    "id": "zono",
+    "name": "ゾノ",
+    "stats": {
+      "atk": 300,
+      "def": 75,
+      "int": 75,
+      "agi": 300,
+      "rng": 14
+    },
+    "skills": [
+      "狂気のバーサーカー"
+    ],
+    "faction": "reference"
+  },
+  {
+    "id": "george",
+    "name": "ジョージ",
+    "stats": {
+      "atk": 75,
+      "def": 150,
+      "int": 200,
+      "agi": 170,
+      "rng": 5
+    },
+    "skills": [
+      "鉄砲王"
+    ],
+    "faction": "reference"
+  }
+]

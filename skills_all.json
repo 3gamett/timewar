@@ -1,0 +1,323 @@
+[
+  {
+    "id": "palmera",
+    "name": "パルメラの抵抗",
+    "category": "passive",
+    "trigger": "damageTaken",
+    "chance": 100,
+    "target": "self",
+    "special": "palmera_counter",
+    "description": "被ダメージ時に反撃し、1ターンの眩暈または消耗を付与する。"
+  },
+  {
+    "id": "freedom",
+    "name": "自由の宣言",
+    "category": "engage",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "enemyRandom",
+    "special": "freedom_declaration",
+    "description": "味方がアクティブを発動しようとすると追撃し、条件で追加発動と回復を行う。"
+  },
+  {
+    "id": "mongol",
+    "name": "モンゴルの拡張",
+    "category": "engage",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "allyTwo",
+    "special": "mongol_expansion",
+    "description": "指揮官の与ダメージ上昇と被ダメージ減少、行動終了時にデバフ解除を試みる。"
+  },
+  {
+    "id": "red_eye",
+    "name": "赤眼の眼光",
+    "category": "passive",
+    "trigger": "turnStart",
+    "chance": 100,
+    "target": "enemyAll",
+    "special": "red_eye",
+    "description": "毎ターン敵軍全体のATK/INTを減少し、自身のATK/INT/DEFを上昇。"
+  },
+  {
+    "id": "phantom",
+    "name": "幻影の芸術",
+    "category": "engage",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "allyAll",
+    "special": "phantom_art",
+    "description": "戦闘前に自軍全体へシールドを与え、制御反応を持つ。"
+  },
+  {
+    "id": "stone_hammer",
+    "name": "岩壁の鉄槌",
+    "category": "active",
+    "trigger": "action",
+    "chance": 45,
+    "target": "enemyAll",
+    "prepTurns": 1,
+    "special": "stone_hammer",
+    "description": "1ターンの準備後、敵軍全体に大ダメージ。"
+  },
+  {
+    "id": "justice",
+    "name": "正義の心",
+    "category": "passive",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "self",
+    "special": "justice_heart",
+    "description": "開幕無敵、アクティブ発動率上昇、アクティブ使用ごとに自己強化。"
+  },
+  {
+    "id": "berserker",
+    "name": "狂気のバーサーカー",
+    "category": "engage",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "self",
+    "special": "berserker",
+    "description": "毎ターンRNGが減少し、3ターン目以降は狂乱攻撃。"
+  },
+  {
+    "id": "gunmaster",
+    "name": "鉄砲王",
+    "category": "engage",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "self",
+    "special": "gunmaster",
+    "description": "連撃を獲得し、通常攻撃のたびに奇襲を獲得することがある。"
+  },
+  {
+    "id": "heal_def",
+    "name": "修復防御",
+    "category": "active",
+    "trigger": "action",
+    "chance": 55,
+    "target": "selfAndLowestAlly",
+    "special": "repair_defense",
+    "description": "自身と兵力が最も低い友軍を回復し、防御を上げる。"
+  },
+  {
+    "id": "budo",
+    "name": "文武両道",
+    "category": "active",
+    "trigger": "action",
+    "chance": 50,
+    "target": "enemyTwo",
+    "special": "budo",
+    "description": "敵2人に知力ダメージと与ダメージ低下。"
+  },
+  {
+    "id": "sage_plot",
+    "name": "賢者の謀",
+    "category": "active",
+    "trigger": "action",
+    "chance": 40,
+    "target": "enemyTwoRandom",
+    "special": "sage_plot",
+    "description": "敵2人に回復禁止と知力ダメージ。"
+  },
+  {
+    "id": "eloquence",
+    "name": "巧みな弁舌",
+    "category": "active",
+    "trigger": "action",
+    "chance": 40,
+    "target": "enemyTwo",
+    "special": "eloquence",
+    "description": "回避と挑発、攻撃低下。"
+  },
+  {
+    "id": "final_battle",
+    "name": "最終決戦",
+    "category": "passive",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "self",
+    "special": "final_battle",
+    "description": "アクティブ発動率とアクティブ与ダメージが伸びる。"
+  },
+  {
+    "id": "purge",
+    "name": "祓いの加護",
+    "category": "active",
+    "trigger": "action",
+    "chance": 35,
+    "target": "allyThree",
+    "special": "purge",
+    "description": "味方3人のデバフ解除と攻撃/知力上昇。"
+  },
+  {
+    "id": "slash",
+    "name": "斬撃",
+    "category": "active",
+    "trigger": "action",
+    "chance": 35,
+    "target": "enemyRandom",
+    "special": "slash",
+    "description": "ランダム敵に2回攻撃。"
+  },
+  {
+    "id": "mental_heal",
+    "name": "念力の治癒",
+    "category": "active",
+    "trigger": "action",
+    "chance": 35,
+    "target": "allyTwoRandom",
+    "special": "mental_heal",
+    "description": "味方2人を回復し、制御効果を1つ解除。"
+  },
+  {
+    "id": "vampire",
+    "name": "吸血",
+    "category": "passive",
+    "trigger": "damageDealt",
+    "chance": 100,
+    "target": "self",
+    "special": "vampire",
+    "description": "与えた総ダメージ量の一部を回復。"
+  },
+  {
+    "id": "bullet",
+    "name": "追撃の銃弾",
+    "category": "combo",
+    "trigger": "afterNormalAttack",
+    "chance": 35,
+    "target": "attackTarget",
+    "special": "bullet",
+    "description": "通常攻撃後に知力ダメージを2回。"
+  },
+  {
+    "id": "supply",
+    "name": "継戦補給",
+    "category": "combo",
+    "trigger": "afterNormalAttack",
+    "chance": 40,
+    "target": "attackTarget",
+    "special": "supply",
+    "description": "通常攻撃後に攻撃し、回復を行う。"
+  },
+  {
+    "id": "full_heal",
+    "name": "全面治癒",
+    "category": "engage",
+    "trigger": "turnStart",
+    "chance": 40,
+    "target": "allyAll",
+    "special": "full_heal",
+    "description": "毎ターン開始時に自軍全体を回復。"
+  },
+  {
+    "id": "dragon_roar",
+    "name": "龍の咆哮",
+    "category": "active",
+    "trigger": "action",
+    "chance": 50,
+    "target": "enemyAll",
+    "special": "dragon_roar",
+    "description": "味方のダメージを上げつつ敵全体へ知力ダメージ。"
+  },
+  {
+    "id": "sniper",
+    "name": "狙撃者の心得",
+    "category": "passive",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "self",
+    "special": "sniper",
+    "description": "必中とクリティカル率上昇。"
+  },
+  {
+    "id": "rainbow_view",
+    "name": "虹の景色",
+    "category": "engage",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "enemyRandom",
+    "special": "rainbow_view",
+    "description": "開幕沈黙、4ターン目以降に破陣と回復。"
+  },
+  {
+    "id": "shield_guard",
+    "name": "鉄壁の守護",
+    "category": "engage",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "allyTwoRandom",
+    "special": "shield_guard",
+    "description": "2人に被ダメージ減少を付与。"
+  },
+  {
+    "id": "stockpile",
+    "name": "機を蓄える",
+    "category": "passive",
+    "trigger": "turnStart",
+    "chance": 100,
+    "target": "self",
+    "special": "stockpile",
+    "description": "毎ターン自分を回復し、防御を上げる。"
+  },
+  {
+    "id": "time_command",
+    "name": "時環の指揮",
+    "category": "engage",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "allyAll",
+    "special": "time_command",
+    "description": "時の流れを整え、自軍全体のAGIを上げる。"
+  },
+  {
+    "id": "time_reversal",
+    "name": "時律の逆行",
+    "category": "active",
+    "trigger": "action",
+    "chance": 45,
+    "target": "enemyTwo",
+    "special": "time_reversal",
+    "description": "敵2人に知力ダメージとAGI低下。"
+  },
+  {
+    "id": "flame_dance",
+    "name": "流焔乱舞",
+    "category": "active",
+    "trigger": "action",
+    "chance": 55,
+    "target": "enemyRandom",
+    "special": "flame_dance",
+    "description": "ランダム敵に2回攻撃し、持続ダメージを付与。"
+  },
+  {
+    "id": "ember_echo",
+    "name": "灼熱の残響",
+    "category": "combo",
+    "trigger": "afterNormalAttack",
+    "chance": 30,
+    "target": "attackTarget",
+    "special": "ember_echo",
+    "description": "通常攻撃後に追加攻撃し、燃焼を付与。"
+  },
+  {
+    "id": "time_shield",
+    "name": "時律の庇護",
+    "category": "engage",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "allyAll",
+    "special": "time_shield",
+    "description": "味方全体にシールドと一時的な無敵を与える。"
+  },
+  {
+    "id": "still_prayer",
+    "name": "静止の祈り",
+    "category": "active",
+    "trigger": "action",
+    "chance": 40,
+    "target": "enemyTwo",
+    "special": "still_prayer",
+    "description": "敵2人に眩暈、味方2人を回復。"
+  }
+]

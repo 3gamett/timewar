@@ -1,0 +1,62 @@
+[
+  {
+    "id": "time_command",
+    "name": "時環の指揮",
+    "category": "engage",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "allyAll",
+    "special": "time_command",
+    "description": "時の流れを整え、自軍全体のAGIを上げる。"
+  },
+  {
+    "id": "time_reversal",
+    "name": "時律の逆行",
+    "category": "active",
+    "trigger": "action",
+    "chance": 45,
+    "target": "enemyTwo",
+    "special": "time_reversal",
+    "description": "敵2人に知力ダメージとAGI低下。"
+  },
+  {
+    "id": "flame_dance",
+    "name": "流焔乱舞",
+    "category": "active",
+    "trigger": "action",
+    "chance": 55,
+    "target": "enemyRandom",
+    "special": "flame_dance",
+    "description": "ランダム敵に2回攻撃し、持続ダメージを付与。"
+  },
+  {
+    "id": "ember_echo",
+    "name": "灼熱の残響",
+    "category": "combo",
+    "trigger": "afterNormalAttack",
+    "chance": 30,
+    "target": "attackTarget",
+    "special": "ember_echo",
+    "description": "通常攻撃後に追加攻撃し、燃焼を付与。"
+  },
+  {
+    "id": "time_shield",
+    "name": "時律の庇護",
+    "category": "engage",
+    "trigger": "battleStart",
+    "chance": 100,
+    "target": "allyAll",
+    "special": "time_shield",
+    "description": "味方全体にシールドと一時的な無敵を与える。"
+  },
+  {
+    "id": "still_prayer",
+    "name": "静止の祈り",
+    "category": "active",
+    "trigger": "action",
+    "chance": 40,
+    "target": "enemyTwo",
+    "special": "still_prayer",
+    "description": "敵2人に眩暈、味方2人を回復。"
+  }
+]
