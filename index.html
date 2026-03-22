@@ -1,150 +1,98 @@
-<!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>時空戦記 Complete</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="app-header">
-    <div>
-      <h1>時空戦記 Complete</h1>
-      <p class="subtitle">偉人・スキル・編成・戦闘ログをひとまとめにした、最初から遊べる完全版。</p>
-    </div>
-    <div class="header-badges">
-      <span>偉人</span><span>開幕</span><span>追撃</span><span>0ターン</span><span>チャンク進行</span>
-    </div>
-  </header>
-
-  <main class="layout">
-    <section class="card log-card">
-      <div class="section-head">
-        <h2>戦闘ログ</h2>
-        <div class="actions">
-          <button id="btnCopyLog">コピー</button>
-          <button id="btnClearLog" class="danger">消去</button>
-        </div>
-      </div>
-      <pre id="logView" class="log"></pre>
-    </section>
-
-    <section class="card hero-card">
-      <h2>クイック操作</h2>
-      <div class="quick-actions">
-        <button id="btnLoadDefaults" class="primary">初期データを復元</button>
-        <button id="btnLoadSaved">保存済みを読み込む</button>
-        <button id="btnSaveAll">今の状態を保存</button>
-        <button id="btnResetAll" class="danger">全消去</button>
-      </div>
-      <div class="status-line">
-        <span id="battleStatus">未開始</span>
-        <span id="turnStatus">ターン: -</span>
-        <span id="chunkStatus">チャンク: -</span>
-        <span id="orderStatus">行動順: -</span>
-      </div>
-      <div class="time-controls">
-        <label>時空操作対象
-          <select id="timeSide">
-            <option value="left">左軍</option>
-            <option value="right">右軍</option>
-          </select>
-        </label>
-        <button id="btnStartBattle" class="primary">戦闘開始</button>
-        <button id="btnNextChunk">次のチャンク</button>
-        <button id="btnAutoRun">自動進行</button>
-        <button id="btnStopAuto">停止</button>
-        <button id="btnReverse">リバーサル</button>
-        <button id="btnRewind">リワインド</button>
-        <button id="btnProtect">プロテクト</button>
-        <button id="btnLoadSample">サンプル編成</button>
-      </div>
-      <p class="hint">保存先は Safari の localStorage です。iPhone なら「ファイル」アプリから開いて使えます。</p>
-    </section>
-
-    <section class="card">
-      <h2>遊び方</h2>
-      <ol class="flow">
-        <li>初期データを復元する</li>
-        <li>左右の編成に偉人を置く</li>
-        <li>必要なら偉人JSON・スキルJSONを編集して保存する</li>
-        <li>戦闘開始 → 次のチャンクで 0ターン目から進める</li>
-        <li>保存済み一覧で、今入っている偉人とスキルを確認できる</li>
-      </ol>
-      <div class="term-box">
-        <strong>用語変換</strong>
-        <div>コンボ → 追撃 / 英傑 → 偉人 / エンゲージ → 開幕</div>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="section-head">
-        <h2>編成</h2>
-        <div class="actions">
-          <button id="btnRefreshSlots">編成を更新</button>
-        </div>
-      </div>
-      <div class="battle-grid">
-        <div>
-          <h3>左軍</h3>
-          <div id="teamLeftSlots" class="slots"></div>
-        </div>
-        <div>
-          <h3>右軍</h3>
-          <div id="teamRightSlots" class="slots"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="card editor-card">
-      <div class="section-head">
-        <h2>偉人JSON</h2>
-        <div class="actions">
-          <button id="btnHeroesTemplate">雛形</button>
-          <button id="btnHeroesSave">保存</button>
-          <button id="btnHeroesExport">書き出し</button>
-          <label class="file-btn">読み込み<input id="heroesFile" type="file" accept="application/json" hidden></label>
-        </div>
-      </div>
-      <textarea id="heroesJson" spellcheck="false"></textarea>
-      <p class="hint">配列でも {"heroes":[...]} でも読めます。保存すると編成プルダウンにも反映されます。</p>
-    </section>
-
-    <section class="card editor-card">
-      <div class="section-head">
-        <h2>スキルJSON</h2>
-        <div class="actions">
-          <button id="btnSkillsTemplate">雛形</button>
-          <button id="btnSkillsSave">保存</button>
-          <button id="btnSkillsExport">書き出し</button>
-          <label class="file-btn">読み込み<input id="skillsFile" type="file" accept="application/json" hidden></label>
-        </div>
-      </div>
-      <textarea id="skillsJson" spellcheck="false"></textarea>
-      <p class="hint">スキル名を偉人の skills 配列から参照します。固有・開幕・アクティブ・追撃を JSON で管理できます。</p>
-    </section>
-
-    <section class="card">
-      <div class="section-head">
-        <h2>保存済み一覧</h2>
-        <div class="actions">
-          <button id="btnReloadLists">一覧更新</button>
-        </div>
-      </div>
-      <div class="saved-lists">
-        <div class="saved-list-block">
-          <h3>偉人</h3>
-          <ul id="savedHeroesList" class="saved-list"></ul>
-        </div>
-        <div class="saved-list-block">
-          <h3>スキル</h3>
-          <ul id="savedSkillsList" class="saved-list"></ul>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <script src="app.js"></script>
-</body>
-</html>
+<!doctype html>  
+<html lang="ja">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>**時空戦記** Complete - Refined</title>  
+  <link rel="stylesheet" href="styles.css" />  
+</head>  
+<body>  
+  <header class="app-header">  
+    <div>  
+      <h1>**時空戦記** Complete</h1>  
+      <p class="subtitle">**偉人・スキル・編成・戦闘ログを完全リニューアル**</p>  
+    </div>  
+  </header>  
+  
+  <main class="layout">  
+    <section class="card log-card">  
+      <div class="section-head">  
+        <h2>**戦闘ログ**</h2>  
+        <div class="log-nav">  
+          <button id="btnPrevTurn">**◀︎**</button>  
+          <span id="currentTurnLabel">Turn 0</span>  
+          <button id="btnNextTurn">**▶︎**</button>  
+        </div>  
+        <div class="actions">  
+          <button id="btnCopyLog">**コピー**</button>  
+          <button id="btnClearLog" class="danger">**消去**</button>  
+        </div>  
+      </div>  
+      <div id="logScrollArea" class="log-container">  
+        <pre id="logView" class="log"></pre>  
+      </div>  
+    </section>  
+  
+    <section class="card hero-card">  
+      <h2>**クイック操作**</h2>  
+      <div class="quick-actions">  
+        <button id="btnLoadDefaults" class="primary">**初期データを復元**</button>  
+        <button id="btnSaveAll">**今の状態を保存**</button>  
+        <button id="btnLoadSample">**サンプル編成**</button>  
+      </div>  
+        
+      <div class="battle-controls">  
+        <div class="status-bar">  
+          <span id="battleStatus">**待機中**</span>  
+          <span id="turnStatus">Turn: -</span>  
+          <span id="chunkStatus">Phase: -</span>  
+        </div>  
+        <div class="main-btns">  
+          <button id="btnStartBattle" class="primary">**戦闘開始**</button>  
+          <button id="btnNextChunk">**次の挙動**</button>  
+          <button id="btnAutoRun">**オート進行**</button>  
+          <button id="btnStopAuto">**停止**</button>  
+        </div>  
+        <div class="player-skills">  
+          <button id="btnReverse">**時環の逆行**</button>  
+          <button id="btnRewind">**時環の巻き戻し**</button>  
+          <button id="btnProtect">**時環の加護**</button>  
+        </div>  
+      </div>  
+    </section>  
+  
+    <section class="card formation-card">  
+      <div class="section-head">  
+        <h2>**軍団編成**</h2>  
+        <button id="btnRefreshSlots">**反映**</button>  
+      </div>  
+      <div class="teams-container">  
+        <div class="team-block">  
+          <h3>**左軍（自軍）**</h3>  
+          <div id="teamLeftSlots" class="slots"></div>  
+        </div>  
+        <div class="team-block">  
+          <h3>**右軍（敵軍）**</h3>  
+          <div id="teamRightSlots" class="slots"></div>  
+        </div>  
+      </div>  
+    </section>  
+  
+    <section class="card editor-card">  
+      <div class="section-head">  
+        <h2>JSON**エディタ**</h2>  
+        <div class="actions">  
+          <button id="btnHeroesSave">**偉人保存**</button>  
+          <button id="btnSkillsSave">**スキル保存**</button>  
+        </div>  
+      </div>  
+      <div class="editors">  
+        <textarea id="heroesJson" placeholder="**偉人データ**"></textarea>  
+        <textarea id="skillsJson" placeholder="**スキルデータ**"></textarea>  
+      </div>  
+    </section>  
+  </main>  
+  
+  <script src="app.js"></script>  
+</body>  
+</html>  
