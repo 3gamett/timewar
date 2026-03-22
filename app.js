@@ -780,7 +780,7 @@ function renderBattleStatus() {
 }
 
 function renderLog() {
-  els.logView.textContent = state.log.join('\n');
+  els.logView.textContent = state.log.slice().reverse().join('\n');
 }
 
 function saveHeroesFromEditor() {
@@ -1073,11 +1073,17 @@ function rewindChunk() {
 function snapshotBattle() {
   if (!state.battle) return;
   state.battle.snapshots = state.battle.snapshots || [];
-  state.battle.snapshots.push({
-    battle: clone(state.battle),
+  // スナップショット配列を一時的に退避してからクローンすることで
+  // 「スナップショットがスナップショットを丸ごと含む」指数的肥大化を防ぐ
+  const savedSnapshots = state.battle.snapshots;
+  state.battle.snapshots = [];
+  const battleClone = clone(state.battle);
+  state.battle.snapshots = savedSnapshots;
+  savedSnapshots.push({
+    battle: battleClone,
     log: clone(state.log),
   });
-  if (state.battle.snapshots.length > 50) state.battle.snapshots.shift();
+  if (savedSnapshots.length > 50) savedSnapshots.shift();
 }
 
 function runOpeningPhase() {
@@ -1246,8 +1252,8 @@ function chooseNormalTarget(unit) {
   const enemies = livingOpponents(unit);
   if (!enemies.length) return null;
   const stats = effectiveStats(unit);
-  const inRange = enemies.filter(t => inRange(unit, t, stats.rng));
-  let pool = inRange.length ? inRange : enemies;
+  const inRangeEnemies = enemies.filter(t => inRange(unit, t, stats.rng));
+  let pool = inRangeEnemies.length ? inRangeEnemies : enemies;
 
   const forced = getTauntTargetFor(unit, pool);
   if (forced) return forced;

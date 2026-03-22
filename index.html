@@ -18,6 +18,17 @@
   </header>
 
   <main class="layout">
+    <section class="card log-card">
+      <div class="section-head">
+        <h2>戦闘ログ</h2>
+        <div class="actions">
+          <button id="btnCopyLog">コピー</button>
+          <button id="btnClearLog" class="danger">消去</button>
+        </div>
+      </div>
+      <pre id="logView" class="log"></pre>
+    </section>
+
     <section class="card hero-card">
       <h2>クイック操作</h2>
       <div class="quick-actions">
@@ -132,16 +143,6 @@
       </div>
     </section>
 
-    <section class="card log-card">
-      <div class="section-head">
-        <h2>戦闘ログ</h2>
-        <div class="actions">
-          <button id="btnCopyLog">コピー</button>
-          <button id="btnClearLog" class="danger">消去</button>
-        </div>
-      </div>
-      <pre id="logView" class="log"></pre>
-    </section>
   </main>
 
   <script src="app.js"></script>
